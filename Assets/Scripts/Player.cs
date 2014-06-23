@@ -5,7 +5,7 @@ public class Player : MonoBehaviour {
 
 	private Transform mytransfrom;
 
-	public float playerSpeed = 30f;
+	public float playerSpeed = 15f;
 
 	//Variable to reference prefab. Prefab = Reusable game object.
 	public GameObject Projectile;
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 		//Spawn Point
 		mytransfrom.position = new Vector3(-3f, -3f, -1f);
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -42,5 +42,10 @@ public class Player : MonoBehaviour {
 			//Instantiate the prefab object.
 			Instantiate(Projectile,new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
 		}
+		if(Input.touchCount > 0) {
+			Instantiate(Projectile,new Vector3 (transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+		}
+		transform.Translate(Input.acceleration.x, -3, -1);
 	}
 }
+
